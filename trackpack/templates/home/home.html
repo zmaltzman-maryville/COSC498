@@ -1,18 +1,16 @@
-{% extends 'base.html' %}
-{# Contains nav bar and title for home page variations #}
-{% block header %}
-  <nav>
-    <ul>
-      {% if g.user %}
-        <li><span>{{ g.user['username'] }}</span>
-        <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
-      {% else %}
-        <li><a href="{{ url_for('auth.register') }}">Register</a>
-        <li><a href="{{ url_for('auth.login') }}">Log In</a>
-      {% endif %}
-    </ul>
-  </nav>
-  <h1 id = "primaryTitle">TrackPack</h1>
-{% endblock %}
-{% block content %}
-{% endblock %}
+{% extends 'base.html' %} 
+{# Contains nav bar and title for home page variations #} 
+{% block nav %}
+	<nav>
+		<ul>
+			{% if g.user %}
+				<li><span>{{ g.user['username'] }}</span></li>
+				<li><a href="{{ url_for('auth.logout') }}">Log Out</a> </li>
+			{% else %}
+				<li><a href="{{ url_for('auth.register') }}">Register</a></li>
+				<li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+			{% endif %}
+		</ul>
+	</nav>
+{% endblock %} 
+{% block content %} {% endblock %}

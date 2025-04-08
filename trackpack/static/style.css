@@ -24,10 +24,40 @@ nav > ul {
 
 a {
   color: #377ba8;
+  text-decoration: none;
 }
 
-#primaryTitle {
+#primary_title {
   font-size: 48px;
+  color: white;
+}
+
+#index_add_button {
+  background-color: green;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+}
+
+.button_row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.package_button {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.edit_button {
+  background-color: grey;
+  color: white;
+}
+
+.remove_button {
+  background-color: red;
   color: white;
 }
 

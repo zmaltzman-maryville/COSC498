@@ -58,7 +58,11 @@ def add_sample_packages():
     ]
     for sample in samples:
         db.execute(
-            "INSERT INTO package (user_id, user_description, recipient, tracking_number, carrier, current_status, order_date, delivery_date, delivered) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            """INSERT INTO package 
+            (user_id, user_description, recipient, 
+            tracking_number, carrier, current_status, 
+            order_date, delivery_date, delivered) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             sample
         )
     db.commit()
