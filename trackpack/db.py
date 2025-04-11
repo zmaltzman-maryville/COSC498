@@ -10,11 +10,8 @@ def make_dicts(cursor, row):
     return dict((cursor.description[idx][0], value)
         for idx, value in enumerate(row))
 
+# Connects to database or returns existing connection
 def get_db():
-    """Connect to the application's configured database. The connection
-    is unique for each request and will be reused if this is called
-    again.
-    """
     if "db" not in g:
         g.db = sqlite3.connect(
             current_app.config["DATABASE"], detect_types=sqlite3.PARSE_DECLTYPES
@@ -24,28 +21,23 @@ def get_db():
 
     return g.db
 
-
+# Close connection if present
 def close_db(e=None):
-    """If this request connected to the database, close the
-    connection.
-    """
     db = g.pop("db", None)
 
     if db is not None:
         db.close()
 
-
+# Recreate empty database from schema
 def init_db():
-    """Clear existing data and create new tables."""
     db = get_db()
 
     with current_app.open_resource("schema.sql") as f:
         db.executescript(f.read().decode("utf8"))
 
-
+# CLI command to run above function
 @click.command("init-db")
 def init_db_command():
-    """Clear existing data and create new tables."""
     init_db()
     click.echo("Initialized the database.")
 
@@ -74,11 +66,8 @@ def add_samples_command():
 
 sqlite3.register_converter("timestamp", lambda v: datetime.fromisoformat(v.decode()))
 
-
+# Called by application factory to register DB function
 def init_app(app):
-    """Register database functions with the Flask app. This is called by
-    the application factory.
-    """
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
     app.cli.add_command(add_samples_command)

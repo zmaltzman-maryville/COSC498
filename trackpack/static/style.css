@@ -52,8 +52,7 @@ a {
 }
 
 .edit_button {
-  background-color: grey;
-  color: white;
+  background-color: white;
 }
 
 .remove_button {
@@ -67,7 +66,7 @@ a {
   margin: auto;
 }
 
-#add_package_form {
+#add_package_form, #edit_package_form {
   display: inline-block;
 }
 
