@@ -143,7 +143,7 @@ def edit_package(package_id):
         return render_template("home/edit.html", package = results[0])
 
 # Function and route to delete entries    
-@bp.route("/edit/<int:package_id>", methods = ['POST'])
+@bp.route("/remove/<int:package_id>", methods = ['POST'])
 @login_required
 def remove_package(package_id):
     # Ensure package_id exists and is an integer

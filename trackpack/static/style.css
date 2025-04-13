@@ -1,12 +1,19 @@
+:root {
+  --TrackPackBlue: #131d3a;
+  --TrackPackOrange: #ed673a;
+}
+
 html {
   font-family: sans-serif;
-  background: black;
-  padding: 1rem;
+  background-image: url("images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
   color: white;
 }
 
 html * {
-  background: black;
   text-align: center;
 }
 
@@ -23,17 +30,16 @@ nav > ul {
 }
 
 a {
-  color: #377ba8;
+  color: var(--TrackPackBlue);
   text-decoration: none;
 }
 
-#primary_title {
-  font-size: 48px;
-  color: white;
+button {
+  cursor: pointer;
 }
 
 #index_add_button {
-  background-color: green;
+  background-color: var(--TrackPackOrange);
   color: white;
   font-size: 24px;
   padding: 10px;
@@ -49,15 +55,19 @@ a {
   height: 35px;
   margin-right: 10px;
   font-size: 16px;
+  background-size: cover;
+  background-color: transparent;
+  border: 0;
+  filter: drop-shadow(0px 0px 5px white);
 }
 
 .edit_button {
-  background-color: white;
+  background-image: url('images/pencil_icon.png');
+ 
 }
 
 .remove_button {
-  background-color: red;
-  color: white;
+  background-image: url('images/delete_icon.png');
 }
 
 #add_package_container {
@@ -76,9 +86,10 @@ a {
 }
 
 .package_container {
-  background: grey;
+  background: var(--TrackPackBlue);
   margin: 10px 0;
   padding: 15px 15px;
+  border-radius: 1rem;
 }
 
 .package_row {
