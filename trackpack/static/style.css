@@ -80,9 +80,20 @@ button {
   display: inline-block;
 }
 
-#all_packages {
+#all_packages, #filter_container {
   max-width: 600px;
   margin: auto;
+}
+
+#filter_container {
+  background: var(--TrackPackOrange);
+  margin-top: 10px;
+  border-radius: 1rem;
+}
+
+#filter_title {
+  font-size: 36px;
+  margin: 0;
 }
 
 .package_container {
