@@ -1,77 +1,51 @@
 {% extends 'home/home.html' %}
 {% block content %}
-  <div id = "add_package_container">
-    <form method = 'post' name = "add" id = "add_package_form">
-      <div class = "package_row">
-        <label for = "description">Description:</label>
-        <input name = "description" />
-      </div>
-      <div class = "package_row">
-        <label for = "recipient">Recipient:</label>
-        <input name = "recipient" />
-      </div>
-      <div class = "package_row">
-        <label for = "tracking_number">Tracking Number:</label>
-        <input name = "tracking_number" />
-      </div>
-      <div class = "package_row">
-        <label for = "carrier">Carrier:</label>
-        <input name = "carrier" />
-      </div>
-      <div class = "package_row">
-        <label for = "current_status">Current Status:</label>
-        <input name = "current_status" />
-      </div>
-      <div class = "package_row">
-        <label for = "order_date">Order Date:</label>
-        <input name = "order_date" />
-      </div>
-      <div class = "package_row">
-        <label for = "delivery_date">Delivery Date:</label>
-        <input name = "delivery_date" />
-      </div>
-      <div class = "package_row">
-        <label for = "delivered">Delivered?</label>
-        <input name = "delivered" type = checkbox />
-      </div>
-      <div class = "package_row">
-        <div></div>
-        <input type = "submit" value = "Add!" />
-      </div>
-    </form>
-  </div>
-  {# Check to make sure packages were found #}
-  {% if packages %}
-    <div id = "all_packages">
-      {# Iterate over packages #}
-      {% for package in packages %}
-        <div class = "package_container">
-          {# Check for each column of package table #}
-          {# Create row if package has that property #}
-          {% for key, value in options.items() %}
-            {% if package[key] %}
-              <div class = "package_row">
-                <h2 class = "package_label">{{ options[key] }}:</h2>
-                <h2 class = "package_value">{{ package[key] }}</h2>
-              </div>
-            {% endif %}
-          {% endfor %}
-          {# Delivered property checked separately #}
-          {% if package['delivered'] != None %}
-            <div class = "package_row">
-              <h2 class = "package_label">Delivered:</h2>
-              {% if package['delivered'] == 1 %}
-                <h2 class = "package_value">Yes!</h2>
-              {% else %}
-                <h2 class = "package_value">Not Yet</h2>
-              {% endif %}
-            </div>
-          {% endif %}
-        </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <h2>You have no packages yet.</h2>
-    <h2>Add some above!</h2>
-  {% endif %}
+	<a href="{{ url_for('home.add_package') }}">
+		<button id="index_add_button">Add New Package</button>
+	</a>
+	{# Check to make sure packages were found #}
+	{% if packages %}
+	<div id="all_packages">
+		{# Iterate over packages #}
+		{% for package in packages %}
+			<div class="package_container">
+				<div class="button_row">
+					<form action = "{{ url_for('home.edit_package', package_id = package['id']) }}" method="get">
+						{# Edit button acts as a form submission, results in redirect #}
+						<button class="edit_button package_button" type="submit" title="Edit this package"></button>
+					</form>
+					<form action = "{{ url_for('home.remove_package', package_id = package['id']) }}" method="post">
+						{# Calls for deletion and reloads homepage #}
+						<button class="remove_button package_button" type="submit" title="Remove this package" 
+						onclick="return confirm('Are you sure you want to delete this package?');"></button>
+					</form>
+				</div>
+				{# Check for each column of package table #}
+				{# Create row if package has that property #}
+				{% for key, value in options.items() %}
+					{% if package[key] %}
+						<div class="package_row">
+							<h2 class="package_label">{{ options[key] }}:</h2>
+							<h2 class="package_value">{{ package[key] }}</h2>
+						</div>
+					{% endif %}
+				{% endfor %}
+				{# Delivered property checked separately #}
+				{% if package['delivered'] != None %}
+				<div class="package_row">
+					<h2 class="package_label">Delivered:</h2>
+					{% if package['delivered'] == 1 %}
+						<h2 class="package_value">Yes!</h2>
+					{% else %}
+						<h2 class="package_value">Not Yet</h2>
+					{% endif %}
+				</div>
+				{% endif %}
+			</div>
+		{% endfor %}
+	</div>
+	{% else %}
+		<h2>You have no packages yet.</h2>
+		<h2>Add some above!</h2>
+	{% endif %}
 {% endblock %}

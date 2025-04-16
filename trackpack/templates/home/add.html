@@ -1,0 +1,43 @@
+{% extends 'home/home.html' %}
+{% block content %}
+    <div id = "add_package_container">
+    <form method = 'post' name = "add" id = "add_package_form">
+      <div class = "package_row">
+        <label for = "user_description">Description:</label>
+        <input name = "user_description" />
+      </div>
+      <div class = "package_row">
+        <label for = "recipient">Recipient:</label>
+        <input name = "recipient" />
+      </div>
+      <div class = "package_row">
+        <label for = "tracking_number">Tracking Number:</label>
+        <input name = "tracking_number" />
+      </div>
+      <div class = "package_row">
+        <label for = "carrier">Carrier:</label>
+        <input name = "carrier" />
+      </div>
+      <div class = "package_row">
+        <label for = "current_status">Current Status:</label>
+        <input name = "current_status" />
+      </div>
+      <div class = "package_row">
+        <label for = "order_date">Order Date:</label>
+        <input name = "order_date" />
+      </div>
+      <div class = "package_row">
+        <label for = "delivery_date">Delivery Date:</label>
+        <input name = "delivery_date" />
+      </div>
+      <div class = "package_row">
+        <label for = "delivered">Delivered?</label>
+        <input name = "delivered" type = checkbox />
+      </div>
+      <div class = "package_row">
+        <div></div>
+        <input type = "submit" value = "Add!">
+      </div>
+    </form>
+  </div>
+{% endblock %}
