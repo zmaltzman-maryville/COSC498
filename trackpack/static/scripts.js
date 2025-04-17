@@ -53,3 +53,20 @@ function clearFilters() {
         packages[i].style.display = "";
     }
 }
+
+// Toggle visibility of filter container
+function toggleFilters() {
+    // Fetch the containers
+    var filters = document.querySelector("#filter_container");
+    var showing = window.getComputedStyle(filters).getPropertyValue('display');
+    var collapsed = document.querySelector("#filter_collapsed");
+    
+    // Invert visibility
+    if (showing == 'none') {
+        collapsed.style.display = "none";
+        filters.style.display = "block";
+    } else {
+        collapsed.style.display = "block";
+        filters.style.display = "none";
+    }
+}
