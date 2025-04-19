@@ -70,3 +70,9 @@ function toggleFilters() {
         filters.style.display = "none";
     }
 }
+
+// Elements from the flash method have no native removal method
+function dismissFlash() {
+    var flash = document.querySelector("#flash_container");
+    flash.remove();
+}
