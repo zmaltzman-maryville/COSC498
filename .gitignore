@@ -12,4 +12,5 @@ build/
 .idea/
 *.swp
 *~
-vars.py
+bootstrap.bat
+bootstrap.sh
