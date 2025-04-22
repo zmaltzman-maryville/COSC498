@@ -1,6 +1,7 @@
 <!doctype html>
 <title>TrackPack</title>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<script src = "{{ url_for('static', filename = 'scripts.js') }}"></script>
 <section class="content">
   <header>
     {% block nav %}
@@ -13,8 +14,17 @@
     {% block header %}
     {% endblock %}
   </header>
-  {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-  {% endfor %}
+  {% set flashes = get_flashed_messages() %}
+  {% if flashes %}
+    <div id="flash_container">
+      <div id="flash_btn_row">
+        <button id="dismiss_flash_btn" onclick="dismissFlash()" title="Dismiss">X</button>
+      </div>
+      <h2 id="flash_title">Warning</h2>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
   {% block content %}{% endblock %}
 </section>
