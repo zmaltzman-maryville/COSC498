@@ -7,7 +7,7 @@ from trackpack import create_app
 from trackpack.db import get_db
 from trackpack.db import init_db
 
-# read in SQL for populating test data
+# Reads the file to load test data into temporary DB
 with open(os.path.join(os.path.dirname(__file__), "data.sql"), "rb") as f:
     _data_sql = f.read().decode("utf8")
 
@@ -31,16 +31,14 @@ def app():
     os.close(db_fd)
     os.unlink(db_path)
 
-
+# For launching in test mode
 @pytest.fixture
 def client(app):
-    """A test client for the app."""
     return app.test_client()
 
-
+# Provided to handled CLI commands
 @pytest.fixture
 def runner(app):
-    """A test runner for the app's Click commands."""
     return app.test_cli_runner()
 
 

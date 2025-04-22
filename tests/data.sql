@@ -3,6 +3,8 @@ VALUES
   ('test', 'pbkdf2:sha256:50000$TCI4GzcX$0de171a4f4dac32e3364c7ddc7c14f3e2fa61f2d17574483f7ffbb431b4acb2f'),
   ('other', 'pbkdf2:sha256:50000$kJPKsz6N$d2d4784f1b030a9761f5ccaeeaca413f27f2ecb76d6168407af962ddce849f79');
 
-INSERT INTO post (title, body, author_id, created)
+INSERT INTO package (user_id, user_description, recipient, tracking_number,
+carrier, current_status, order_date, delivery_date, delivered)
 VALUES
-  ('test title', 'test' || x'0a' || 'body', 1, '2018-01-01 00:00:00');
+  (1, 'Vitamins', NULL, '123456', 'USPS', 'In Transit', '04/01/25', NULL, NULL),
+  (1, 'Batteries', 'Me', '741852', 'FedEx', 'Delivered', '04/04/25', '04/08/25', 1);
