@@ -38,6 +38,12 @@ button {
   cursor: pointer;
 }
 
+#landing_container {
+  background-color: var(--TrackPackBlue);
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+
 #index_add_button {
   background-color: var(--TrackPackOrange);
   color: white;

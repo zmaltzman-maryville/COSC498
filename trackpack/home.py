@@ -34,8 +34,9 @@ def home():
         packages = get_packages(g.user['id'])
         options = get_package_options()
         return render_template("home/index.html", packages = packages, options = options)
+    # User is not logged in. Load landing page instead
     else:
-        return render_template("home/index.html")
+        return render_template("home/landing.html")
 
 # Function for pulling package data from DB
 def get_packages(user_id, package_id = None):
