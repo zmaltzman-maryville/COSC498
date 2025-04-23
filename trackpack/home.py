@@ -1,3 +1,4 @@
+import re
 from flask import Blueprint
 from flask import flash
 from flask import g
@@ -26,12 +27,31 @@ def get_package_options():
     
     return options
 
+# Prepare URL to make tracking number a link
+def get_tracking_page_url(number, carrier):
+    # Remove non-alphanumeric characters from the tracking number
+    sanitized = re.sub("\\W", "", number)
+    carrier = carrier.upper()
+    
+    if carrier == "USPS":
+        return f"https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels={sanitized}%2C&tABt=false"
+    elif carrier == "UPS":
+        return f"https://www.ups.com/track?track=yes&trackNums={sanitized}"
+    elif carrier == "FEDEX":
+        return f"https://www.fedex.com/fedextrack/?trknbr={sanitized}" 
+    else:
+        return None
+
 # Homepage for viewing packages a user has registered
 @bp.route("/")
 def home():
     # Retrieve packages based on cookie's user ID
     if g.user:
         packages = get_packages(g.user['id'])
+        for package in packages:
+            if package['tracking_number'] and package['carrier']:
+                url = get_tracking_page_url(package['tracking_number'], package['carrier'])
+                package['url'] = url
         options = get_package_options()
         return render_template("home/index.html", packages = packages, options = options)
     # User is not logged in. Load landing page instead

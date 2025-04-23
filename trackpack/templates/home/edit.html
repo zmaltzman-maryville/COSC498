@@ -1,39 +1,39 @@
 {% extends 'home/home.html' %}
 {% block content %}
-    <div id = "edit_package_container">
+    <div id = "edit_package_container" class="package_container">
     <form method = 'post' name = "edit" id = "edit_package_form">
       <div class = "package_row">
-        <label for = "user_description">Description:</label>
+        <label class="package_label" for = "user_description">Description:</label>
         {# Prefill inputs with existing values where present #}
-        <input name = "user_description" {% if package['user_description'] %} value="{{ package['user_description'] }}"{% endif %}/>
+        <input class="package_value" name = "user_description" {% if package['user_description'] %} value="{{ package['user_description'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "recipient">Recipient:</label>
-        <input name = "recipient" {% if package['recipient'] %} value="{{ package['recipient'] }}"{% endif %}/>
+        <label class="package_label" for = "recipient">Recipient:</label>
+        <input class="package_value" name = "recipient" {% if package['recipient'] %} value="{{ package['recipient'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "tracking_number">Tracking Number:</label>
-        <input name = "tracking_number" {% if package['tracking_number'] %} value="{{ package['tracking_number'] }}"{% endif %}/>
+        <label class="package_label" for = "tracking_number">Tracking Number:</label>
+        <input class="package_value" name = "tracking_number" {% if package['tracking_number'] %} value="{{ package['tracking_number'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "carrier">Carrier:</label>
-        <input name = "carrier" {% if package['carrier'] %} value="{{ package['carrier'] }}"{% endif %}/>
+        <label class="package_label" for = "carrier">Carrier:</label>
+        <input class="package_value" name = "carrier" {% if package['carrier'] %} value="{{ package['carrier'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "current_status">Current Status:</label>
-        <input name = "current_status" {% if package['current_status'] %} value="{{ package['current_status'] }}"{% endif %}/>
+        <label class="package_label" for = "current_status">Current Status:</label>
+        <input class="package_value" name = "current_status" {% if package['current_status'] %} value="{{ package['current_status'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "order_date">Order Date:</label>
-        <input name = "order_date" {% if package['order_date'] %} value="{{ package['order_date'] }}"{% endif %}/>
+        <label class="package_label" for = "order_date">Order Date:</label>
+        <input class="package_value" name = "order_date" {% if package['order_date'] %} value="{{ package['order_date'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "delivery_date">Delivery Date:</label>
-        <input name = "delivery_date" {% if package['delivery_date'] %} value="{{ package['delivery_date'] }}"{% endif %}/>
+        <label class="package_label" for = "delivery_date">Delivery Date:</label>
+        <input class="package_value" name = "delivery_date" {% if package['delivery_date'] %} value="{{ package['delivery_date'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
-        <label for = "delivered">Delivered?</label>
-        <input name = "delivered" type = checkbox {% if package['delivered'] == 1 %} checked{% endif %}/>
+        <label class="package_label" for = "delivered">Delivered?</label>
+        <input class="package_value" name = "delivered" type = checkbox {% if package['delivered'] == 1 %} checked{% endif %}/>
       </div>
       <div class = "package_row">
         <div></div>

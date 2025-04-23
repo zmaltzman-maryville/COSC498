@@ -1,42 +1,42 @@
 {% extends 'home/home.html' %}
 {% block content %}
-    <div id = "add_package_container">
+    <div id = "add_package_container" class="package_container">
     <form method = 'post' name = "add" id = "add_package_form">
       <div class = "package_row">
-        <label for = "user_description">Description:</label>
-        <input name = "user_description" />
+        <label class="package_label" for = "user_description">Description:</label>
+        <input class="package_value" name = "user_description" />
       </div>
       <div class = "package_row">
-        <label for = "recipient">Recipient:</label>
-        <input name = "recipient" />
+        <label class="package_label" for = "recipient">Recipient:</label>
+        <input class="package_value" name = "recipient" />
       </div>
       <div class = "package_row">
-        <label for = "tracking_number">Tracking Number:</label>
-        <input name = "tracking_number" />
+        <label class="package_label" for = "tracking_number">Tracking Number:</label>
+        <input class="package_value" name = "tracking_number" />
       </div>
       <div class = "package_row">
-        <label for = "carrier">Carrier:</label>
-        <input name = "carrier" />
+        <label class="package_label" for = "carrier">Carrier:</label>
+        <input class="package_value" name = "carrier" />
       </div>
       <div class = "package_row">
-        <label for = "current_status">Current Status:</label>
-        <input name = "current_status" />
+        <label class="package_label" for = "current_status">Current Status:</label>
+        <input class="package_value" name = "current_status" />
       </div>
       <div class = "package_row">
-        <label for = "order_date">Order Date:</label>
-        <input name = "order_date" />
+        <label class="package_label" for = "order_date">Order Date:</label>
+        <input class="package_value" name = "order_date" />
       </div>
       <div class = "package_row">
-        <label for = "delivery_date">Delivery Date:</label>
-        <input name = "delivery_date" />
+        <label class="package_label" for = "delivery_date">Delivery Date:</label>
+        <input class="package_value" name = "delivery_date" />
       </div>
       <div class = "package_row">
-        <label for = "delivered">Delivered?</label>
-        <input name = "delivered" type = checkbox />
+        <label class="package_label" for = "delivered">Delivered?</label>
+        <input class="package_value" name = "delivered" type = checkbox />
       </div>
       <div class = "package_row">
         <div></div>
-        <input type = "submit" value = "Add!">
+        <input type = "submit" value = "Add">
       </div>
     </form>
   </div>

@@ -5,6 +5,28 @@
 	</a>
 	{# Check to make sure packages were found #}
 	{% if packages %}
+	{# Inputs to apply filters to packages #}
+	<div id="filter_collapsed" onclick="toggleFilters()">
+		<div></div>
+		<h2 class="filter_title">Filters</h2>
+	</div>
+	<div id="filter_container">
+		<h2 class="filter_title" onclick="toggleFilters()">Filters</h2>
+		{% for key, value in options.items() %}
+			<div class="package_row">
+				<h2 class="package_label">{{ options[key] }}:</h2>
+				<input class="package_value {{ key }}" oninput="filterPackages()"/>
+			</div>
+		{% endfor %}
+		<div class="package_row">
+			<h2 class="package_label">Delivered:</h2>
+			<input class="package_value delivered" oninput="filterPackages()"/>
+		</div>
+		<div class="package_row">
+			<div></div>
+			<button id="clear_button" onclick="clearFilters()">Clear</button>
+		</div>
+	</div>
 	<div id="all_packages">
 		{# Iterate over packages #}
 		{% for package in packages %}
@@ -22,24 +44,64 @@
 				</div>
 				{# Check for each column of package table #}
 				{# Create row if package has that property #}
-				{% for key, value in options.items() %}
-					{% if package[key] %}
-						<div class="package_row">
-							<h2 class="package_label">{{ options[key] }}:</h2>
-							<h2 class="package_value">{{ package[key] }}</h2>
-						</div>
-					{% endif %}
-				{% endfor %}
-				{# Delivered property checked separately #}
-				{% if package['delivered'] != None %}
+				{% if package['user_description'] %}
+					<div class="package_row">
+						<h2 class="package_label">Description:</h2>
+						<h2 class="package_value user_description">{{ package['user_description'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['recipient'] %}
+					<div class="package_row">
+						<h2 class="package_label">Recipient:</h2>
+						<h2 class="package_value recipient">{{ package['recipient'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['tracking_number'] %}
 				<div class="package_row">
-					<h2 class="package_label">Delivered:</h2>
-					{% if package['delivered'] == 1 %}
-						<h2 class="package_value">Yes!</h2>
-					{% else %}
-						<h2 class="package_value">Not Yet</h2>
+					<h2 class="package_label">Tracking Number:</h2>
+					{# If a URL was passed in, turn this property into a link #}
+					{% if package['url'] %}
+					<a href="{{ package['url'] }}" target="_blank" class="tracking_link">
+						{% endif %}
+						<h2 class="package_value tracking_number">{{ package['tracking_number'] }}</h2>
+						{% if package['url'] %}
+					</a>
 					{% endif %}
 				</div>
+				{% endif %}
+				{% if package['carrier'] %}
+					<div class="package_row">
+						<h2 class="package_label">Carrier:</h2>
+						<h2 class="package_value carrier">{{ package['carrier'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['current_status'] %}
+					<div class="package_row">
+						<h2 class="package_label">Current Status:</h2>
+						<h2 class="package_value current_status">{{ package['current_status'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['order_date'] %}
+					<div class="package_row">
+						<h2 class="package_label">Order Date:</h2>
+						<h2 class="package_value order_date">{{ package['order_date'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['delivery_date'] %}
+					<div class="package_row">
+						<h2 class="package_label">Delivery Date:</h2>
+						<h2 class="package_value delivery_date">{{ package['delivery_date'] }}</h2>
+					</div>
+				{% endif %}
+				{% if package['delivered'] != None %}
+					<div class="package_row">
+						<h2 class="package_label">Delivered:</h2>
+						{% if package['delivered'] == 1 %}
+							<h2 class="package_value delivered">Yes</h2>
+						{% else %}
+							<h2 class="package_value delivered">No</h2>
+						{% endif %}
+					</div>
 				{% endif %}
 			</div>
 		{% endfor %}
