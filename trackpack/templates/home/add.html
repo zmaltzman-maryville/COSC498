@@ -4,31 +4,39 @@
     <form method = 'post' name = "add" id = "add_package_form">
       <div class = "package_row">
         <label class="package_label" for = "user_description">Description:</label>
-        <input class="package_value" name = "user_description" />
+        <input class="package_value modify_value" name = "user_description" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "recipient">Recipient:</label>
-        <input class="package_value" name = "recipient" />
+        <input class="package_value modify_value" name = "recipient" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "tracking_number">Tracking Number:</label>
-        <input class="package_value" name = "tracking_number" />
+        <input class="package_value modify_value" name = "tracking_number" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "carrier">Carrier:</label>
-        <input class="package_value" name = "carrier" />
+        <select class="package_value modify_value" name = "carrier">
+          <option value=""></option>
+          <option value="Amazon">Amazon</option>
+          <option value="DHL">DHL</option>
+          <option value="FedEx">FedEx</option>
+          <option value="UPS">UPS</option>
+          <option value="USPS">USPS</option>
+          <option value="Other">Other</option>
+        </select>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "current_status">Current Status:</label>
-        <input class="package_value" name = "current_status" />
+        <input class="package_value modify_value" name = "current_status" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "order_date">Order Date:</label>
-        <input class="package_value" name = "order_date" />
+        <input class="package_value modify_value" name = "order_date" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "delivery_date">Delivery Date:</label>
-        <input class="package_value" name = "delivery_date" />
+        <input class="package_value modify_value" name = "delivery_date" />
       </div>
       <div class = "package_row">
         <label class="package_label" for = "delivered">Delivered?</label>

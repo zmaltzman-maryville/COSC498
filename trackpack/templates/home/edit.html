@@ -5,31 +5,39 @@
       <div class = "package_row">
         <label class="package_label" for = "user_description">Description:</label>
         {# Prefill inputs with existing values where present #}
-        <input class="package_value" name = "user_description" {% if package['user_description'] %} value="{{ package['user_description'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "user_description" {% if package['user_description'] %} value="{{ package['user_description'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "recipient">Recipient:</label>
-        <input class="package_value" name = "recipient" {% if package['recipient'] %} value="{{ package['recipient'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "recipient" {% if package['recipient'] %} value="{{ package['recipient'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "tracking_number">Tracking Number:</label>
-        <input class="package_value" name = "tracking_number" {% if package['tracking_number'] %} value="{{ package['tracking_number'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "tracking_number" {% if package['tracking_number'] %} value="{{ package['tracking_number'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "carrier">Carrier:</label>
-        <input class="package_value" name = "carrier" {% if package['carrier'] %} value="{{ package['carrier'] }}"{% endif %}/>
+        <select class="package_value modify_value" name = "carrier">
+          <option value=""></option>
+          <option value="Amazon" {% if package['carrier'] == 'Amazon'%} selected {% endif %}>Amazon</option>
+          <option value="DHL" {% if package['carrier'] == 'DHL'%} selected {% endif %}>DHL</option>
+          <option value="FedEx" {% if package['carrier'] == 'FedEx'%} selected {% endif %}>FedEx</option>
+          <option value="UPS" {% if package['carrier'] == 'UPS'%} selected {% endif %}>UPS</option>
+          <option value="USPS" {% if package['carrier'] == 'USPS'%} selected {% endif %}>USPS</option>
+          <option value="Other" {% if package['carrier'] == 'Other'%} selected {% endif %}>Other</option>
+        </select>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "current_status">Current Status:</label>
-        <input class="package_value" name = "current_status" {% if package['current_status'] %} value="{{ package['current_status'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "current_status" {% if package['current_status'] %} value="{{ package['current_status'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "order_date">Order Date:</label>
-        <input class="package_value" name = "order_date" {% if package['order_date'] %} value="{{ package['order_date'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "order_date" {% if package['order_date'] %} value="{{ package['order_date'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "delivery_date">Delivery Date:</label>
-        <input class="package_value" name = "delivery_date" {% if package['delivery_date'] %} value="{{ package['delivery_date'] }}"{% endif %}/>
+        <input class="package_value modify_value" name = "delivery_date" {% if package['delivery_date'] %} value="{{ package['delivery_date'] }}"{% endif %}/>
       </div>
       <div class = "package_row">
         <label class="package_label" for = "delivered">Delivered?</label>
