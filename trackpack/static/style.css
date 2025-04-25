@@ -30,6 +30,15 @@ nav > ul {
   gap: 10px;
 }
 
+.nav_elem {
+  font-size: 20px;
+  background-color: var(--TrackPackBlue);
+  color: white;
+  padding: 3px 3px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
 a {
   color: var(--TrackPackBlue);
   text-decoration: none;
@@ -45,7 +54,19 @@ button {
   padding: 10px 10px;
 }
 
-#index_add_button {
+#landing_title {
+  font-size: 44px;
+}
+
+#landing_container p {
+  font-size: 24px;
+}
+
+#landing_container img {
+  max-width: 50%;
+}
+
+.home_link_button {
   background-color: var(--TrackPackOrange);
   color: white;
   font-size: 24px;
@@ -91,6 +112,10 @@ button {
 #all_packages, #filter_container, #filter_collapsed {
   max-width: 700px;
   margin: auto;
+}
+
+#all_packages:last-child {
+  margin-bottom: 20px;
 }
 
 #filter_collapsed {
@@ -149,7 +174,7 @@ button {
 }
 
 .content:last-child {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 .content form {

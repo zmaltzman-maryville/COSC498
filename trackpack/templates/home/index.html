@@ -1,7 +1,7 @@
 {% extends 'home/home.html' %}
 {% block content %}
 	<a href="{{ url_for('home.add_package') }}">
-		<button id="index_add_button">Add New Package</button>
+		<button class="home_link_button">Add New Package</button>
 	</a>
 	{# Check to make sure packages were found #}
 	{% if packages %}

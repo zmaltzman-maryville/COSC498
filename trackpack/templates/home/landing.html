@@ -1,7 +1,13 @@
 {% extends 'home/home.html' %}
 {% block content %}
     <div id="landing_container">
-        <h1>Welcome to TrackPack!</h1>
+        <h1 id="landing_title">Welcome to TrackPack!</h1>
+        <a href="{{ url_for('auth.register') }}">
+            <button class="home_link_button">Create Account</button>
+        </a>
+        <a href="{{ url_for('auth.login') }}">
+            <button class="home_link_button">Log In</button>
+        </a>
         <p>
             Shopping online is so much more relaxing than traveling from store to store, 
             but it brings some new problems with it. After making purchases from a few different 
@@ -13,6 +19,7 @@
             to be delivered, and every other little update you can imagine. There comes a 
             point that it's hard to keep up with what's arriving, where, how, and when. 
         </p>
+        <img src="{{ url_for('static', filename = 'images/landing_emails.png') }}">
         <p>
             That's where TrackPack comes in! 
         </p>
@@ -21,6 +28,7 @@
             in one tidy location. We allow you to put as much or as little as you like about
             your packages. 
         </p>
+        <img src="{{ url_for('static', filename = 'images/landing_add_new.png') }}">
         <p>
             As a bonus, we automatically provide tracking links for packages being sent with
             FedEx, UPS, and USPS. If you have a new package from any of those three carriers,
@@ -28,6 +36,7 @@
             When you see the package on the home page, the tracking number will also be a link
             to take you directly to that package's tracking info. 
         </p>
+        <img src="{{ url_for('static', filename = 'images/landing_links.png') }}">
         <p>
             TrackPack also provides filtering for packages you've logged with us, so the more
             thorough you are, the more it can help you. The fields update live as you type in
@@ -39,5 +48,11 @@
             corner of the package. We'll save whatever updates you make so you can clear your
             inbox and brain space. 
         </p>
+        <p>
+            Create an account to get started now!
+        </p>
+        <a href="{{ url_for('auth.register') }}">
+            <button class="home_link_button">Sign Up Here!</button>
+        </a>
     </div>
 {% endblock %}
