@@ -1,7 +1,5 @@
 import pytest
 
-from trackpack.db import get_db
-
 # Get data for form posts
 def get_payload():
     payload = {
@@ -74,3 +72,30 @@ def test_edit(client, auth):
     response = client.get("/")
     assert b"Box 3" not in response.data
     assert b"Box 4" in response.data
+
+    # Page for invalid package ID should redirect with flash
+    response = client.get("/edit/10")
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/"
+    response = client.get("/")
+    assert b"You don&#39;t have a package with that ID." in response.data
+
+# Test that packages can be deleted
+def test_remove(client, auth):
+    auth.login()
+    response = client.get("/")
+    # Confirm Box 3 exists
+    assert b"Box 3" in response.data
+
+    # Try to remove invalid package number
+    response = client.post("/remove/A")
+    assert response.status_code == 404
+
+    # Now try to remove an actual package
+    response = client.post("/remove/3")
+    assert response.status_code == 302
+    assert response.headers["Location"] == "/"
+    # Should redirect home without that package
+    response = client.get("/")
+    assert b"Box 2" in response.data
+    assert b"Box 3" not in response.data
