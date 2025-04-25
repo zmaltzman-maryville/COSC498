@@ -6,5 +6,6 @@ VALUES
 INSERT INTO package (user_id, user_description, recipient, tracking_number,
 carrier, current_status, order_date, delivery_date, delivered)
 VALUES
-  (1, 'Vitamins', NULL, '123456', 'USPS', 'In Transit', '04/01/25', NULL, NULL),
-  (1, 'Batteries', 'Me', '741852', 'FedEx', 'Delivered', '04/04/25', '04/08/25', 1);
+  (1, 'Box 1', NULL, '123456', 'USPS', 'In Transit', '04/01/25', NULL, NULL),
+  (1, 'Box 2', NULL, '1Z998877', 'UPS', 'In Transit', '04/02/25', NULL, NULL),
+  (1, 'Box 3', 'Me', '741852', 'FedEx', 'Delivered', '04/04/25', '04/08/25', 1);

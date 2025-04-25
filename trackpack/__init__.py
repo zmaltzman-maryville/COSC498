@@ -6,7 +6,8 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         # Environment variable set/exported in bootstrap script
-        SECRET_KEY = os.environ['SECRET_KEY'],
+        # SECRET_KEY = os.environ['SECRET_KEY'],
+        SECRET_KEY = "dev",
         # Using SQLite DB for sake of project
         DATABASE=os.path.join(app.instance_path, "trackpack.sqlite"),
     )
