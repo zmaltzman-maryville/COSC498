@@ -1,8 +1,5 @@
 @echo off
 
-:: Set your application key here
-set SECRET_KEY=YouShouldChangeMe
-
 :: Update the path to your venv activate script
 :: Comment out if venv is unused
 call PATH\TO\VENV\ACTIVATE
