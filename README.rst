@@ -27,7 +27,7 @@ Finally, create a copy of the bootstrap script for your environment and edit as 
 Run
 ---
 
-Assuming all installation steps were completed, simple run your bootstrap script.
+Assuming all installation steps were completed, simply run your bootstrap script.
 
 
 Test

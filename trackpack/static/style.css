@@ -30,6 +30,15 @@ nav > ul {
   gap: 10px;
 }
 
+.nav_elem {
+  font-size: 20px;
+  background-color: var(--TrackPackBlue);
+  color: white;
+  padding: 3px 3px;
+  border: 2px solid white;
+  border-radius: 3px;
+}
+
 a {
   color: var(--TrackPackBlue);
   text-decoration: none;
@@ -39,7 +48,25 @@ button {
   cursor: pointer;
 }
 
-#index_add_button {
+#landing_container {
+  background-color: var(--TrackPackBlue);
+  border-radius: 5px;
+  padding: 10px 10px;
+}
+
+#landing_title {
+  font-size: 44px;
+}
+
+#landing_container p {
+  font-size: 24px;
+}
+
+#landing_container img {
+  max-width: 50%;
+}
+
+.home_link_button {
   background-color: var(--TrackPackOrange);
   color: white;
   font-size: 24px;
@@ -71,7 +98,7 @@ button {
   background-image: url('images/delete_icon.png');
 }
 
-#add_package_container {
+#add_package_container, #edit_package_container {
   max-width: 500px;
   background-color: var(--TrackPackBlue);
   align-self: center;
@@ -85,6 +112,10 @@ button {
 #all_packages, #filter_container, #filter_collapsed {
   max-width: 700px;
   margin: auto;
+}
+
+#all_packages:last-child {
+  margin-bottom: 20px;
 }
 
 #filter_collapsed {
@@ -133,13 +164,17 @@ button {
   margin: 10px 10px;
 }
 
+.modify_value {
+  width: 60%;
+}
+
 .tracking_link {
   color: lightblue;
   text-decoration: underline;
 }
 
 .content:last-child {
-  margin-bottom: 0;
+  margin-bottom: 20px;
 }
 
 .content form {
@@ -148,7 +183,7 @@ button {
   flex-direction: column;
 }
 
-form input {
+form input, form select {
   background: white;
 }
 

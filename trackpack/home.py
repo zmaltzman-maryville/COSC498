@@ -33,6 +33,7 @@ def get_tracking_page_url(number, carrier):
     sanitized = re.sub("\\W", "", number)
     carrier = carrier.upper()
     
+    # Build link if it's a support carrier
     if carrier == "USPS":
         return f"https://tools.usps.com/go/TrackConfirmAction?tRef=fullpage&tLc=2&text28777=&tLabels={sanitized}%2C&tABt=false"
     elif carrier == "UPS":
@@ -49,13 +50,15 @@ def home():
     if g.user:
         packages = get_packages(g.user['id'])
         for package in packages:
+            # If supported carrier, template will user 'url' key to make anchor
             if package['tracking_number'] and package['carrier']:
                 url = get_tracking_page_url(package['tracking_number'], package['carrier'])
                 package['url'] = url
         options = get_package_options()
         return render_template("home/index.html", packages = packages, options = options)
+    # User is not logged in. Load landing page instead
     else:
-        return render_template("home/index.html")
+        return render_template("home/landing.html")
 
 # Function for pulling package data from DB
 def get_packages(user_id, package_id = None):
