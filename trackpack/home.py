@@ -49,11 +49,12 @@ def home():
     # Retrieve packages based on cookie's user ID
     if g.user:
         packages = get_packages(g.user['id'])
-        for package in packages:
-            # If supported carrier, template will user 'url' key to make anchor
-            if package['tracking_number'] and package['carrier']:
-                url = get_tracking_page_url(package['tracking_number'], package['carrier'])
-                package['url'] = url
+        if packages:
+            for package in packages:
+                # If supported carrier, template will user 'url' key to make anchor
+                if package['tracking_number'] and package['carrier']:
+                    url = get_tracking_page_url(package['tracking_number'], package['carrier'])
+                    package['url'] = url
         options = get_package_options()
         return render_template("home/index.html", packages = packages, options = options)
     # User is not logged in. Load landing page instead
